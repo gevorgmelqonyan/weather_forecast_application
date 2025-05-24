@@ -45,17 +45,25 @@ def print_weather_info(data, temp_c = True):
         gradus_symbol = "°F"
     condition = data["current"]["condition"]["text"]
     wind_speed_mph = data["current"]["wind_mph"]
+    wind_degree = data["current"]["wind_degree"]
+    wind_dir = data["current"]["wind_dir"]
+    precip_mm = data["current"]["precip_mm"]
     air_pressure = data["current"]["pressure_mb"]
     humidity = data["current"]["humidity"]
     cloud = data["current"]["cloud"]
     vis_km = data["current"]["vis_km"]
+    uv = data["current"]["uv"]
 
     print(f"\nIt is {gradus}{gradus_symbol} in {city_name} and the weather is {condition}.")
     print(f"Wind speed is {wind_speed_mph} km/h.")
+    print(f"Wind direction is {wind_degree}°, which corresponds to compass direction '{wind_dir}'.")
+    print(f"Precipitation amount is {precip_mm} mm.")
     print(f"Air pressure is {air_pressure} mb.")
     print(f"Humidity is {humidity}%.")
     print(f"Cloud cover is {cloud}%.")
-    print(f"Visibility is {vis_km} km.\n")
+    print(f"Visibility is {vis_km} km.")
+    print(f"UV index is {uv} (0–11+ scale).")
+
 
 def print_weather_forecast_days(data, temp_c = True):
     for i in range(5):
@@ -90,6 +98,7 @@ def print_weather_forecast_days(data, temp_c = True):
 
 def print_weather_forecast_hours(data, temp_c = True):
     city_name = data["location"]["name"]
+    print()
     for i in range(0, 24):
         forecast_hour = data["forecast"]["forecastday"][0]["hour"][i]['time']
         if temp_c:
@@ -108,8 +117,9 @@ def print_weather_forecast_hours(data, temp_c = True):
         print(
             f"At {forecast_hour[-5:]}, the weather in {city_name}: {gradus}{gradus_symbol} with {condition.lower()}, "
             f"wind speed of {wind_speed_mph} mph, air pressure {air_pressure} mb, humidity {humidity}%, "
-            f"cloud cover {cloud}%, and visibility up to {vis_km} km.\n"
+            f"cloud cover {cloud}%, and visibility up to {vis_km} km."
         )
+
 
 def show_plot_for_hours(data, temp_c = True):
     city_name = data["location"]["name"]
@@ -117,9 +127,9 @@ def show_plot_for_hours(data, temp_c = True):
     gradus_symbol = "°C" if temp_c else "°F"
     forecast_hour = [data["forecast"]["forecastday"][0]["hour"][i]['time'][-5:] for i in range(24)]
 
-    plt.plot(forecast_hour, tems, marker="o", linestyle='-', color='skyblue', label=f"Temperature ({temp_c})")
+    plt.plot(forecast_hour, tems, marker="o", linestyle='-', color='skyblue', label=f"Temperature ({temp_c})  in {city_name}")
     plt.xlabel("Hours")
-    plt.ylabel(f"Temperature ({temp_c})")
+    plt.ylabel(f"Temperature ({gradus_symbol}) in {city_name}")
     plt.grid(True)
     plt.legend()
     plt.show()
@@ -130,7 +140,7 @@ def show_plot_for_days(data, temp_c = True):
     gradus_symbol = "°C" if temp_c else "°F"
     forecast_day = [data["forecast"]["forecastday"][i]["date"] for i in range(5)]
 
-    plt.plot(forecast_day, tems, marker="o", linestyle='-', color='skyblue', label=f"Temperature ({gradus_symbol})")
+    plt.plot(forecast_day, tems, marker="o", linestyle='-', color='skyblue', label=f"Temperature ({gradus_symbol})  in {city_name}")
     plt.xlabel("Days")
     plt.ylabel(f"Temperature ({gradus_symbol})")
     plt.grid(True)
