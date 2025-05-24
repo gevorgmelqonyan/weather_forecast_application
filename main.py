@@ -47,7 +47,7 @@ while True:
     while not data:
         location_info = input("Now please input your city or zip code: ")
         if (location_info in cache.keys() and cache[location_info][1] == method and
-                time() - cache[location_info][0] < 10):
+                time() - cache[location_info][0] < 300):
             data = cache[location_info][2]
         else:
             data = get_api_info(location_info, api_key, f"{method}.json", forecast_day_count)
