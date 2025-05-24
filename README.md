@@ -36,16 +36,16 @@ pip install -r requirements.txt
 python main.py
 ```
 
-💡 *Note: If `python` doesn't work, try using `python3` instead.*
+*Note: If `python` doesn't work, try using `python3` instead.*
 
 ---
 
 ## Notes and Considerations
 
-- ⚠️ **The API key is already included in a `.env` file** in the repository in order to ensure the program works immediately after cloning from GitHub. This is **not secure practice** and only done for convenience during testing or demonstration.
+-  **The API key is already included in a `.env` file** in the repository in order to ensure the program works immediately after cloning from GitHub. This is **not secure practice** and only done for convenience during testing or demonstration.
 
-- 📈 **When viewing charts/graphs, the program is temporarily paused**. To continue, **close the chart window**.
+-  **When viewing charts/graphs, the program is temporarily paused**. To continue, **close the chart window**.
 
-- 🖥️ It is **recommended to maximize your terminal window**, as the application prints a lot of information. After each weather query, the program prints the command selection menu again. If you enter a city or ZIP code and get the menu again without seeing the weather data, **scroll up** to view the previous output.
+-  It is **recommended to maximize your terminal window**, as the application prints a lot of information. After each weather query, the program prints the command selection menu again. If you enter a city or ZIP code and get the menu again without seeing the weather data, **scroll up** to view the previous output.
 
-- 🕒 When plotting **hourly weather charts**, since the X-axis includes 24 points, the hour labels may be hard to read. To avoid this, it is **recommended to maximize the chart window to full screen**.
+-  When plotting **hourly weather charts**, since the X-axis includes 24 points, the hour labels may be hard to read. To avoid this, it is **recommended to maximize the chart window to full screen**.
