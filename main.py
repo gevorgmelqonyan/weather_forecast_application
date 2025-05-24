@@ -4,9 +4,7 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-
 api_key = os.getenv("API_KEY")
-print(api_key)
 
 cache= {}
 forecast_day_count = 5
@@ -22,7 +20,8 @@ commands = {
 
 degree_unit = input("Hello, which one would you prefer: Celsius or Fahrenheit?"
                     "\nEnter 'c' for Celsius"
-                    "\nEnter 'f' for Fahrenheit.\n").lower()
+                    "\nEnter 'f' for Fahrenheit.\n"
+                    "Please enter your choice: ").lower()
 
 while degree_unit != 'c' and degree_unit != 'f':
     degree_unit = input("Please enter 'c' or 'f': 'c' for Celsius and 'f' for Fahrenheit.").lower()
